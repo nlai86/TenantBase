@@ -3,131 +3,199 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TenantBase</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>TenantBase - Smarter Tenant Screening</title>
+  <meta name="description" content="Smarter screening. Safer tenants. Trusted data. Screen tenants with verified legal history, credit checks, and rental intel.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
     <div><strong>TenantBase</strong></div>
-    <nav>
+    <nav id="mainNav">
       <a href="#how-it-works">How It Works</a>
       <a href="#what-makes-us-different">Why Us?</a>
       <a href="#pricing">Pricing</a>
       <a href="#login">Login</a>
       <a href="#signup">Sign Up</a>
     </nav>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </header>
 
-  <div class="hero" id="home">
-    <h1>Avoid Your Next Problem.</h1>
-    <p>Smarter screening. Safer tenants. Trusted data.</p>
-    <input type="text" id="tenantSearch" placeholder="Search a Tenant...">
-    <br />
-    <button onclick="searchTenant()">Get Started</button>
-    <button class="secondary">View Sample Report</button>
-  </div>
+  <main>
+    <section class="hero" id="home">
+      <h1>Avoid Your Next Problem Tenant</h1>
+      <p>Smarter screening. Safer tenants. Trusted data from verified sources.</p>
+      
+      <div class="hero-search">
+        <input type="text" id="tenantSearch" placeholder="Enter tenant name to search..." aria-label="Tenant search">
+      </div>
+      
+      <div class="hero-buttons">
+        <button id="searchBtn">Get Started</button>
+        <button class="secondary">View Sample Report</button>
+      </div>
+    </section>
 
-  <div class="section blue" id="how-it-works">
-    <h2>How It Works</h2>
-    <div class="steps">
-      <div class="step">
-        <h3>Step 1</h3>
-        <p>Search a tenant’s name to begin your check.</p>
+    <section class="section blue" id="how-it-works">
+      <h2>How It Works</h2>
+      <div class="steps">
+        <div class="step">
+          <h3>1. Search</h3>
+          <p>Enter a tenant's name to begin your comprehensive background check.</p>
+        </div>
+        <div class="step">
+          <h3>2. Review</h3>
+          <p>Access credit reports, legal disputes, and rental history all in one dashboard.</p>
+        </div>
+        <div class="step">
+          <h3>3. Decide</h3>
+          <p>Make informed decisions with confidence, backed by verified data.</p>
+        </div>
       </div>
-      <div class="step">
-        <h3>Step 2</h3>
-        <p>See credit, disputes, and rental history in one place.</p>
+    </section>
+
+    <section class="section highlight" id="what-makes-us-different">
+      <h2>What Makes Us Different?</h2>
+      <div class="comparison">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>TenantBase</th>
+              <th>OpenRoom</th>
+              <th>SingleKey</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Verified Legal History</td>
+              <td>✅ Yes</td>
+              <td>📝 Crowdsourced</td>
+              <td>❌ No</td>
+            </tr>
+            <tr>
+              <td>Integrated Credit Check</td>
+              <td>✅ Yes</td>
+              <td>❌ No</td>
+              <td>✅ Yes</td>
+            </tr>
+            <tr>
+              <td>Private Landlord Intel</td>
+              <td>✅ Yes</td>
+              <td>❌ No</td>
+              <td>❌ No</td>
+            </tr>
+            <tr>
+              <td>Eviction & Dispute Tracking</td>
+              <td>✅ Yes</td>
+              <td>❌ No</td>
+              <td>❌ No</td>
+            </tr>
+            <tr>
+              <td>Rent Collection Tools</td>
+              <td>🔜 Coming Soon</td>
+              <td>❌ No</td>
+              <td>✅ Yes</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="step">
-        <h3>Step 3</h3>
-        <p>Decide with confidence, backed by real data.</p>
+    </section>
+
+    <section class="section highlight" id="pricing">
+      <h2>Pricing Plans</h2>
+      <div class="pricing">
+        <table>
+          <thead>
+            <tr>
+              <th>Plan</th>
+              <th>Monthly</th>
+              <th>Features</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Basic</td>
+              <td>$29</td>
+              <td>Tenant Search, LTB Report Summary</td>
+            </tr>
+            <tr>
+              <td>Pro</td>
+              <td>$79</td>
+              <td>Full Report Access, Credit Integration</td>
+            </tr>
+            <tr>
+              <td>Enterprise</td>
+              <td>Contact Us</td>
+              <td>API Access, Multi-Property Tools</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+    </section>
+  </main>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal" role="dialog" aria-labelledby="loginTitle" aria-hidden="true">
+    <div class="modal-content">
+      <span class="close" data-modal="loginModal" aria-label="Close login modal">&times;</span>
+      <h2 id="loginTitle">Welcome Back</h2>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="loginEmail">Email Address</label>
+          <input type="email" id="loginEmail" name="email" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" name="password" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="modal-btn">Sign In</button>
+        <p class="modal-link">Don't have an account? <a href="#" id="switchToSignup">Create one here</a></p>
+      </form>
     </div>
   </div>
 
-  <div class="section highlight" id="what-makes-us-different">
-    <h2>What Makes Us Different?</h2>
-    <div class="comparison">
-      <table>
-        <tr>
-          <th>Feature</th>
-          <th>TenantBase</th>
-          <th>OpenRoom</th>
-          <th>SingleKey</th>
-        </tr>
-        <tr>
-          <td>Verified Legal History</td>
-          <td>✅</td>
-          <td>Crowdsourced</td>
-          <td>❌</td>
-        </tr>
-        <tr>
-          <td>Integrated Credit Check</td>
-          <td>✅</td>
-          <td>❌</td>
-          <td>✅</td>
-        </tr>
-        <tr>
-          <td>Private Landlord Intel</td>
-          <td>✅</td>
-          <td>❌</td>
-          <td>❌</td>
-        </tr>
-        <tr>
-          <td>Eviction & Dispute Tracking</td>
-          <td>✅</td>
-          <td>❌</td>
-          <td>❌</td>
-        </tr>
-        <tr>
-          <td>Rent Tools</td>
-          <td>❌</td>
-          <td>❌</td>
-          <td>✅</td>
-        </tr>
-      </table>
-    </div>
-  </div>
-
-  <div class="section highlight" id="pricing">
-    <h2>Pricing</h2>
-    <div class="pricing">
-      <table>
-        <tr>
-          <th>Plan</th>
-          <th>Monthly</th>
-          <th>Features</th>
-        </tr>
-        <tr>
-          <td>Basic</td>
-          <td>$XX</td>
-          <td>Tenant Search, LTB Report Summary</td>
-        </tr>
-        <tr>
-          <td>Pro</td>
-          <td>$XX</td>
-          <td>Full Report Access, Credit Integration</td>
-        </tr>
-        <tr>
-          <td>Enterprise</td>
-          <td>Contact Us</td>
-          <td>API Access, Multi-Property Tools</td>
-        </tr>
-      </table>
+  <!-- Sign Up Modal -->
+  <div id="signupModal" class="modal" role="dialog" aria-labelledby="signupTitle" aria-hidden="true">
+    <div class="modal-content">
+      <span class="close" data-modal="signupModal" aria-label="Close signup modal">&times;</span>
+      <h2 id="signupTitle">Join TenantBase</h2>
+      <form id="signupForm">
+        <div class="form-group">
+          <label for="signupName">Full Name</label>
+          <input type="text" id="signupName" name="name" required autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="signupEmail">Email Address</label>
+          <input type="email" id="signupEmail" name="email" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="signupPassword">Password</label>
+          <input type="password" id="signupPassword" name="password" required autocomplete="new-password">
+        </div>
+        <div class="form-group">
+          <label for="signupConfirmPassword">Confirm Password</label>
+          <input type="password" id="signupConfirmPassword" name="confirmPassword" required autocomplete="new-password">
+        </div>
+        <button type="submit" class="modal-btn">Create Account</button>
+        <p class="modal-link">Already have an account? <a href="#" id="switchToLogin">Sign in here</a></p>
+      </form>
     </div>
   </div>
 
   <footer>
-    <p>TenantBase © 2025. All Rights Reserved.</p>
-    <p><a href="#">Contact</a> | <a href="#">Terms</a> | <a href="#">Privacy</a></p>
+    <p>&copy; 2025 TenantBase. All rights reserved.</p>
+    <p>
+      <a href="#contact">Contact</a> | 
+      <a href="#terms">Terms of Service</a> | 
+      <a href="#privacy">Privacy Policy</a>
+    </p>
   </footer>
 
-  <script>
-    function searchTenant() {
-      const input = document.getElementById('tenantSearch').value;
-      alert(`Searching tenant: ${input}`);
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
