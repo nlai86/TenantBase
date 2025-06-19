@@ -259,11 +259,91 @@ nav a:hover {
   box-shadow: 0 0 0 3px rgba(100, 130, 173, 0.1), var(--shadow);
 }
 
+.search-button {
+  width: 100%;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  border-radius: var(--btn-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-lg);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.search-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.search-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.search-button:hover::before {
+  left: 100%;
+}
+
+.search-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Update hero buttons to center the single button */
 .hero-buttons {
   display: flex;
   gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+/* Make sample report button match the search button style but secondary */
+.hero .secondary {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  border-radius: var(--btn-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-lg);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero .secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.hero .secondary:hover::before {
+  left: 100%;
+}
+
+.hero .secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
 }
 
 .hero button {
@@ -299,10 +379,6 @@ nav a:hover {
 
 .hero button:hover::before {
   left: 100%;
-}
-
-.hero .secondary {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
 }
 
 .hero button:hover:not(:disabled) {
@@ -496,6 +572,17 @@ footer a:hover {
   position: relative;
   box-shadow: var(--shadow-xl);
   animation: modalSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Comprehensive report modal needs to be much larger */
+.comprehensive-report-modal {
+  max-width: 1200px;
+  width: 95%;
+  margin: 2% auto;
+  padding: 0;
+  max-height: 95vh;
 }
 
 @keyframes modalSlideIn {
@@ -525,6 +612,7 @@ footer a:hover {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  z-index: 10;
 }
 
 .close:hover {
@@ -611,4 +699,609 @@ footer a:hover {
   opacity: 0.7;
   cursor: not-allowed;
   transform: none;
+}
+
+.modal-link {
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--text-secondary);
+}
+
+.modal-link a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.modal-link a:hover {
+  text-decoration: underline;
+}
+
+/* Notification Styles */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: white;
+  border-radius: var(--btn-radius);
+  box-shadow: var(--shadow-xl);
+  border-left: 4px solid var(--primary);
+  padding: 1rem 1.5rem;
+  max-width: 400px;
+  z-index: 1001;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.notification.show {
+  transform: translateX(0);
+}
+
+.notification.success {
+  border-left-color: #10b981;
+}
+
+.notification.warning {
+  border-left-color: #f59e0b;
+}
+
+.notification.error {
+  border-left-color: #ef4444;
+}
+
+.notification-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.notification-icon {
+  font-size: 1.25rem;
+}
+
+.notification-message {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* Comprehensive Tenant Report Styles */
+.comprehensive-tenant-report {
+  background: white;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+}
+
+.report-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  padding: 2rem;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.tenant-basic-info h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.report-date {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 0.9rem;
+}
+
+.risk-assessment {
+  text-align: right;
+}
+
+.risk-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.risk-description {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.report-content {
+  padding: 2rem;
+}
+
+.report-sections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.report-section {
+  background: #f8fafc;
+  border-radius: var(--card-radius);
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+}
+
+.report-section.full-width {
+  grid-column: 1 / -1;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.section-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.data-source {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* Credit Score Display */
+.credit-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.credit-score-display {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.score-circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  color: white;
+  flex-shrink: 0;
+}
+
+.score-number {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.score-max {
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+.score-info {
+  flex: 1;
+}
+
+.credit-rating {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.score-percentile {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.credit-insights {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.insight-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.insight-label {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.insight-value {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* Legal Details */
+.legal-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-card {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+
+.stat-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  display: block;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 0.25rem;
+}
+
+.legal-summary h4,
+.rental-timeline h4,
+.intel-insights h4 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.eviction-details {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #fef2f2;
+  border-radius: 8px;
+  border-left: 4px solid #ef4444;
+}
+
+.eviction-item {
+  padding: 0.75rem;
+  background: white;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+  border: 1px solid #fecaca;
+}
+
+.eviction-item:last-child {
+  margin-bottom: 0;
+}
+
+.eviction-property {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.eviction-reason {
+  color: #dc2626;
+  margin-bottom: 0.25rem;
+}
+
+.eviction-date {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Rental Metrics */
+.rental-metrics {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.metric-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.metric-label {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.metric-value {
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.85rem;
+}
+
+.metric-value.excellent {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.metric-value.good {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.metric-value.poor {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* Intelligence Section */
+.intel-summary {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.intel-insights ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.intel-insights li {
+  padding: 0.75rem;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+/* Recommendations */
+.recommendations-content {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.recommendation {
+  padding: 1.5rem;
+}
+
+.recommendation h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.recommendation.approved {
+  background: #d1fae5;
+  border-left: 4px solid #10b981;
+}
+
+.recommendation.approved h4 {
+  color: #065f46;
+}
+
+.recommendation.conditional {
+  background: #fef3c7;
+  border-left: 4px solid #f59e0b;
+}
+
+.recommendation.conditional h4 {
+  color: #92400e;
+}
+
+.recommendation.declined {
+  background: #fee2e2;
+  border-left: 4px solid #ef4444;
+}
+
+.recommendation.declined h4 {
+  color: #991b1b;
+}
+
+.recommendation ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.recommendation li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+/* Report Footer */
+.report-footer {
+  background: #f8fafc;
+  padding: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.footer-info {
+  margin-bottom: 1.5rem;
+}
+
+.footer-info p {
+  margin: 0.5rem 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.footer-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.report-action-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--btn-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+  font-size: 0.9rem;
+}
+
+.report-action-btn.primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+}
+
+.report-action-btn.secondary {
+  background: white;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.report-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Search Suggestions Styles */
+.search-suggestions-report,
+.not-found-report {
+  padding: 2rem;
+}
+
+.suggestions-list {
+  margin: 1.5rem 0;
+}
+
+.suggestion-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.suggestion-item:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateX(5px);
+}
+
+.suggestion-name {
+  font-weight: 500;
+}
+
+.suggestion-arrow {
+  font-weight: bold;
+  opacity: 0.7;
+}
+
+.suggestions-footer {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+/* Not Found Styles */
+.not-found-content {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.not-found-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.not-found-content h4 {
+  margin: 0 0 1rem 0;
+  color: var(--text-primary);
+}
+
+.not-found-content ul,
+.recommendations ul {
+  text-align: left;
+  max-width: 500px;
+  margin: 1rem auto;
+}
+
+.recommendations {
+  background: #f0f4f8;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-search {
+    flex-direction: column;
+  }
+  
+  .report-sections-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .risk-assessment {
+    text-align: center;
+  }
+  
+  .credit-score-display {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .legal-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-actions {
+    flex-direction: column;
+  }
+  
+  .comprehensive-report-modal {
+    width: 98%;
+    margin: 1% auto;
+  }
+  
+  .modal-content {
+    width: 95%;
+    margin: 10% auto;
+  }
 }
