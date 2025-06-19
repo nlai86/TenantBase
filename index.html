@@ -4,23 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TenantBase</title>
-  <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
     <div><strong>TenantBase</strong></div>
     <nav>
-      <a href="#">Home</a>
-      <a href="#">How It Works</a>
-      <a href="#">Pricing</a>
-      <a href="#">Login</a>
-      <a href="#">Sign Up</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#what-makes-us-different">Why Us?</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#login">Login</a>
+      <a href="#signup">Sign Up</a>
     </nav>
   </header>
 
-  <div class="hero">
+  <div class="hero" id="home">
     <h1>Avoid Your Next Problem.</h1>
     <p>Smarter screening. Safer tenants. Trusted data.</p>
     <input type="text" id="tenantSearch" placeholder="Search a Tenant...">
@@ -29,7 +28,7 @@
     <button class="secondary">View Sample Report</button>
   </div>
 
-  <div class="section">
+  <div class="section blue" id="how-it-works">
     <h2>How It Works</h2>
     <div class="steps">
       <div class="step">
@@ -47,7 +46,7 @@
     </div>
   </div>
 
-  <div class="section">
+  <div class="section highlight" id="what-makes-us-different">
     <h2>What Makes Us Different?</h2>
     <div class="comparison">
       <table>
@@ -91,7 +90,7 @@
     </div>
   </div>
 
-  <div class="section">
+  <div class="section highlight" id="pricing">
     <h2>Pricing</h2>
     <div class="pricing">
       <table>
@@ -124,6 +123,11 @@
     <p><a href="#">Contact</a> | <a href="#">Terms</a> | <a href="#">Privacy</a></p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    function searchTenant() {
+      const input = document.getElementById('tenantSearch').value;
+      alert(`Searching tenant: ${input}`);
+    }
+  </script>
 </body>
 </html>
