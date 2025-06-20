@@ -15,7 +15,7 @@
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --btn-radius: 12px;
   --card-radius: 16px;
-  --nav-height: 72px;
+  --nav-height: 90px;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -52,6 +52,31 @@ header {
 header.scrolled {
   box-shadow: var(--shadow-xl);
   backdrop-filter: blur(15px);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.logo-container:hover {
+  transform: translateY(-1px);
+}
+
+.logo {
+  height: 10em;
+  width: auto;
+  filter: brightness(0) invert(1);
+  transition: var(--transition);
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.logo-container:hover .logo {
+  transform: scale(1.05);
 }
 
 header div {
@@ -560,11 +585,24 @@ footer a:hover {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  align-items: flex-start !important;
+  justify-content: center;
+  padding-top: 1vh; /* Reduced from 2vh for closer to top */
+  /* Hide scrollbar while keeping functionality */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+}
+
+/* Hide scrollbar for Webkit browsers */
+.modal::-webkit-scrollbar {
+  display: none;
 }
 
 .modal-content {
   background: white;
-  margin: 5% auto;
+  margin: 1% auto 2%; /* Reduced top margin, added bottom margin for scrolling */
   padding: 2rem;
   border-radius: var(--card-radius);
   width: 90%;
@@ -572,17 +610,37 @@ footer a:hover {
   position: relative;
   box-shadow: var(--shadow-xl);
   animation: modalSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  max-height: 90vh;
+  max-height: 95vh;
   overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: auto;
+  /* Hide scrollbar while keeping functionality */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+}
+
+/* Hide scrollbar for Webkit browsers */
+.modal-content::-webkit-scrollbar {
+  display: none;
 }
 
 /* Comprehensive report modal needs to be much larger */
 .comprehensive-report-modal {
   max-width: 1200px;
   width: 95%;
-  margin: 2% auto;
+  margin: 1% auto 2%; /* Consistent with regular modal */
   padding: 0;
   max-height: 95vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* Hide scrollbar while keeping functionality */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+}
+
+/* Hide scrollbar for Webkit browsers */
+.comprehensive-report-modal::-webkit-scrollbar {
+  display: none;
 }
 
 @keyframes modalSlideIn {
@@ -598,12 +656,11 @@ footer a:hover {
 
 .close {
   color: var(--text-secondary);
-  float: right;
   font-size: 28px;
   font-weight: bold;
   position: absolute;
-  top: 15px;
-  right: 20px;
+  top: 10px;
+  right: 15px;
   cursor: pointer;
   transition: var(--transition);
   width: 32px;
@@ -612,12 +669,17 @@ footer a:hover {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  z-index: 10;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  line-height: 1; /* Ensures proper vertical centering */
+  text-align: center;
 }
 
 .close:hover {
   color: var(--primary);
-  background: rgba(100, 130, 173, 0.1);
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .modal h2 {
@@ -720,17 +782,18 @@ footer a:hover {
 /* Notification Styles */
 .notification {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 10px;
+  right: 10px;
   background: white;
-  border-radius: var(--btn-radius);
+  border-radius: 8px; /* Smaller radius */
   box-shadow: var(--shadow-xl);
-  border-left: 4px solid var(--primary);
-  padding: 1rem 1.5rem;
-  max-width: 400px;
+  border-left: 3px solid var(--primary); /* Thinner border */
+  padding: 0.5rem 0.75rem; /* Much smaller padding */
+  max-width: 240px; /* Much smaller width */
   z-index: 1001;
   transform: translateX(100%);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.8rem; /* Smaller text */
 }
 
 .notification.show {
@@ -752,16 +815,18 @@ footer a:hover {
 .notification-content {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.4rem; /* Smaller gap */
 }
 
 .notification-icon {
-  font-size: 1.25rem;
+  font-size: 0.875rem; /* Much smaller icon */
+  flex-shrink: 0;
 }
 
 .notification-message {
   font-weight: 500;
   color: var(--text-primary);
+  line-height: 1.3;
 }
 
 /* Comprehensive Tenant Report Styles */
@@ -774,21 +839,33 @@ footer a:hover {
 .report-header {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   color: white;
-  padding: 2rem;
+  padding: 2rem 2rem 2rem 2rem; /* Match the report content padding */
+  position: relative;
 }
 
 .header-content {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 2rem;
   flex-wrap: wrap;
+  padding-top: 2rem; /* Add space above for the close button */
+  max-width: 1200px; /* Match the modal max-width */
+  margin: 0 auto; /* Center the content */
+}
+
+.tenant-basic-info {
+  flex: 1;
+  min-width: 0; /* Prevents flex item from overflowing */
+  text-align: left; /* Ensure left alignment */
 }
 
 .tenant-basic-info h2 {
   margin: 0 0 0.5rem 0;
   font-size: 2rem;
   font-weight: 700;
+  word-wrap: break-word; /* Handle long names gracefully */
+  text-align: left; /* Explicitly left-align the name */
 }
 
 .report-date {
@@ -799,6 +876,9 @@ footer a:hover {
 
 .risk-assessment {
   text-align: right;
+  flex-shrink: 0; /* Prevent shrinking */
+  margin-right: 0; /* Remove extra margin - let container handle alignment */
+  min-width: 180px; /* Ensure consistent width */
 }
 
 .risk-badge {
@@ -810,6 +890,7 @@ footer a:hover {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 0.5rem;
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 .risk-description {
@@ -820,6 +901,8 @@ footer a:hover {
 
 .report-content {
   padding: 2rem;
+  max-width: 1200px; /* Match header content max-width */
+  margin: 0 auto; /* Center the content */
 }
 
 .report-sections-grid {
@@ -1275,11 +1358,25 @@ footer a:hover {
   
   .header-content {
     flex-direction: column;
-    text-align: center;
+    text-align: left; /* Keep left alignment on mobile too */
+    align-items: flex-start; /* Start from left on mobile */
+    padding-right: 2rem; /* Adjust for mobile */
+    padding-top: 1.5rem; /* Less top padding on mobile */
+  }
+  
+  .tenant-basic-info {
+    text-align: left; /* Explicitly left on mobile */
+  }
+  
+  .tenant-basic-info h2 {
+    text-align: left; /* Keep name on left even on mobile */
   }
   
   .risk-assessment {
-    text-align: center;
+    text-align: left; /* Align with name on mobile */
+    margin-left: 0; /* Remove auto margin on mobile */
+    margin-right: 0; /* Remove right margin on mobile */
+    margin-top: 1rem; /* Add some space from name */
   }
   
   .credit-score-display {
@@ -1297,11 +1394,23 @@ footer a:hover {
   
   .comprehensive-report-modal {
     width: 98%;
-    margin: 1% auto;
+    margin: 0.5% auto 2%; /* Even closer to top on mobile */
   }
   
   .modal-content {
     width: 95%;
-    margin: 10% auto;
+    margin: 2% auto 4%; /* Adjust for mobile */
+  }
+  
+  .close {
+    top: 6px;
+    right: 8px;
+    font-size: 24px;
+    width: 28px;
+    height: 28px;
+  }
+  
+  .modal {
+    padding-top: 0.5vh; /* Even closer to top on mobile */
   }
 }

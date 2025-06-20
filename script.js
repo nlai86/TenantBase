@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
   // Expanded tenant database for comprehensive testing
   const tenantDatabase = {
-    // Existing entries
     'john smith': {
       name: 'John Smith',
-      creditScore: 720,
+      creditScore: 780,
       ltbCases: 0,
       evictionHistory: 'None',
       evictionDetails: [],
@@ -15,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     'sarah johnson': {
       name: 'Sarah Johnson',
-      creditScore: 650,
+      creditScore: 720,
       ltbCases: 1,
       evictionHistory: '1 case settled out of court (2023)',
       evictionDetails: [],
@@ -26,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     'mike wilson': {
       name: 'Mike Wilson',
-      creditScore: 580,
+      creditScore: 520,
       ltbCases: 3,
       evictionHistory: '2 evictions, 1 pending case',
       evictionDetails: [
@@ -50,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     'test user': {
       name: 'Test User',
-      creditScore: 750,
+      creditScore: 850,
       ltbCases: 0,
       evictionHistory: 'None',
       evictionDetails: [],
@@ -63,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Your requested tenant profiles
     'nicholas lai': {
       name: 'Nicholas Lai',
-      creditScore: 695,
+      creditScore: 800,
       ltbCases: 0,
       evictionHistory: 'None',
       evictionDetails: [],
@@ -74,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     'tula nikitopoulos': {
       name: 'Tula Nikitopoulos',
-      creditScore: 740,
+      creditScore: 843,
       ltbCases: 0,
       evictionHistory: 'None',
       evictionDetails: [],
@@ -85,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     'angelika korzeniewski': {
       name: 'Angelika Korzeniewski',
-      creditScore: 730,
+      creditScore: 861,
       ltbCases: 0,
       evictionHistory: 'None',
       evictionDetails: [],
@@ -335,7 +334,7 @@ document.addEventListener('DOMContentLoaded', function () {
       
       if (searchResult.type === 'exact') {
         // Found exact match - show full report
-        showNotification(`✅ Records found for ${searchResult.data.name}! Generating comprehensive report...`, 'success');
+        showNotification(`Records found for ${searchResult.data.name}! Generating comprehensive report...`, 'success');
         setTimeout(() => {
           showTenantReport(searchResult.data);
         }, 800);
@@ -382,7 +381,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const evictionDetailsHTML = tenantData.evictionDetails && tenantData.evictionDetails.length > 0 ? `
       <div class="eviction-details">
-        <h5>🚨 Detailed Eviction History:</h5>
+        <h5>WARNING: Detailed Eviction History:</h5>
         ${tenantData.evictionDetails.map(eviction => `
           <div class="eviction-item">
             <div class="eviction-property">${eviction.property}</div>
@@ -416,14 +415,14 @@ document.addEventListener('DOMContentLoaded', function () {
             <!-- Credit Information Section -->
             <div class="report-section">
               <div class="section-header">
-                <h3>📊 Credit Information</h3>
+                <h3>Credit Information</h3>
                 <span class="data-source">Source: Equifax Canada</span>
               </div>
               <div class="credit-details">
                 <div class="credit-score-display">
                   <div class="score-circle">
                     <span class="score-number">${tenantData.creditScore}</span>
-                    <span class="score-max">/850</span>
+                    <span class="score-max">/900</span>
                   </div>
                   <div class="score-info">
                     <div class="credit-rating" style="color: ${creditInfo.color};">
@@ -454,7 +453,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <!-- Legal History Section -->
             <div class="report-section">
               <div class="section-header">
-                <h3>⚖️ Legal History</h3>
+                <h3>Legal History</h3>
                 <span class="data-source">Source: Landlord Tenant Board of Ontario</span>
               </div>
               <div class="legal-details">
@@ -492,7 +491,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <!-- Rental History Section -->
             <div class="report-section">
               <div class="section-header">
-                <h3>🏠 Rental History</h3>
+                <h3>Rental History</h3>
                 <span class="data-source">Source: Property Management Partners Network</span>
               </div>
               <div class="rental-details">
@@ -526,7 +525,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <!-- Private Intelligence Section -->
             <div class="report-section">
               <div class="section-header">
-                <h3>💬 Private Landlord Intelligence</h3>
+                <h3>Private Landlord Intelligence</h3>
                 <span class="data-source">Source: TenantBase Verified Network</span>
               </div>
               <div class="intel-details">
@@ -537,20 +536,20 @@ document.addEventListener('DOMContentLoaded', function () {
                   <h4>Key Insights:</h4>
                   <ul>
                     ${tenantData.riskLevel === 'Low' ? `
-                      <li>✅ Consistently positive feedback from previous landlords</li>
-                      <li>✅ Responsive to communication and maintenance requests</li>
-                      <li>✅ Left previous properties in excellent condition</li>
-                      <li>✅ No neighbor complaints or disturbances reported</li>
+                      <li>Consistently positive feedback from previous landlords</li>
+                      <li>Responsive to communication and maintenance requests</li>
+                      <li>Left previous properties in excellent condition</li>
+                      <li>No neighbor complaints or disturbances reported</li>
                     ` : tenantData.riskLevel === 'Medium' ? `
-                      <li>⚠️ Mixed feedback with some concerns addressed</li>
-                      <li>⚠️ Generally responsive but occasional communication delays</li>
-                      <li>⚠️ Minor issues resolved through landlord intervention</li>
-                      <li>✅ Shows improvement over time</li>
+                      <li>Mixed feedback with some concerns addressed</li>
+                      <li>Generally responsive but occasional communication delays</li>
+                      <li>Minor issues resolved through landlord intervention</li>
+                      <li>Shows improvement over time</li>
                     ` : `
-                      <li>🚨 Multiple negative reports from previous landlords</li>
-                      <li>🚨 Poor communication and unresponsive behavior</li>
-                      <li>🚨 Property damage and maintenance neglect reported</li>
-                      <li>🚨 Neighbor complaints and disturbances documented</li>
+                      <li>Multiple negative reports from previous landlords</li>
+                      <li>Poor communication and unresponsive behavior</li>
+                      <li>Property damage and maintenance neglect reported</li>
+                      <li>Neighbor complaints and disturbances documented</li>
                     `}
                   </ul>
                 </div>
@@ -561,13 +560,13 @@ document.addEventListener('DOMContentLoaded', function () {
           <!-- Recommendations Section - Full Width -->
           <div class="report-section full-width">
             <div class="section-header">
-              <h3>📋 TenantBase Recommendations</h3>
+              <h3>TenantBase Recommendations</h3>
               <span class="data-source">Based on comprehensive data analysis</span>
             </div>
             <div class="recommendations-content">
               ${tenantData.riskLevel === 'Low' ? `
                 <div class="recommendation approved">
-                  <h4>✅ RECOMMENDED FOR RENTAL</h4>
+                  <h4>RECOMMENDED FOR RENTAL</h4>
                   <ul>
                     <li>Excellent tenant with minimal risk factors</li>
                     <li>Strong credit history and payment reliability</li>
@@ -577,7 +576,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
               ` : tenantData.riskLevel === 'Medium' ? `
                 <div class="recommendation conditional">
-                  <h4>⚠️ CONDITIONAL APPROVAL RECOMMENDED</h4>
+                  <h4>CONDITIONAL APPROVAL RECOMMENDED</h4>
                   <ul>
                     <li>Good tenant with some areas of concern</li>
                     <li>Consider additional security deposit or guarantor</li>
@@ -588,14 +587,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
               ` : `
                 <div class="recommendation declined">
-                  <h4>🚨 HIGH RISK - CAREFUL CONSIDERATION REQUIRED</h4>
+                  <h4>HIGH RISK - CAREFUL CONSIDERATION REQUIRED</h4>
                   <ul>
                     <li>Multiple risk factors present in tenant history</li>
                     <li>Consider requiring co-signer or additional security</li>
                     <li>Verify all income sources and employment</li>
                     <li>Consider alternative applicants if available</li>
                     <li>If proceeding, implement strict lease monitoring</li>
-                    ${tenantData.evictionDetails && tenantData.evictionDetails.length > 0 ? '<li>⚠️ Multiple evictions indicate serious rental risk</li>' : ''}
+                    ${tenantData.evictionDetails && tenantData.evictionDetails.length > 0 ? '<li>Multiple evictions indicate serious rental risk</li>' : ''}
                   </ul>
                 </div>
               `}
@@ -609,8 +608,8 @@ document.addEventListener('DOMContentLoaded', function () {
             <p><strong>Data Privacy:</strong> All information is collected and processed in accordance with PIPEDA and Ontario privacy legislation.</p>
           </div>
           <div class="footer-actions">
-            <button class="report-action-btn secondary" onclick="printReport()">📄 Print Report</button>
-            <button class="report-action-btn secondary" onclick="exportReport('${tenantData.name}')">📧 Email Report</button>
+            <button class="report-action-btn secondary" onclick="printReport()">Print Report</button>
+            <button class="report-action-btn secondary" onclick="exportReport('${tenantData.name}')">Email Report</button>
             <button class="report-action-btn primary" onclick="closeModal(document.getElementById('reportModal'))">Close Report</button>
           </div>
         </div>
@@ -707,7 +706,7 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
         
         <div class="not-found-content">
-          <div class="not-found-icon">🔍</div>
+          <div class="not-found-icon">Search</div>
           <h4>Tenant Not Found</h4>
           <p>We couldn't find any records for "${searchValue}" in our database. This could mean:</p>
           <ul>
@@ -756,7 +755,7 @@ document.addEventListener('DOMContentLoaded', function () {
     notification.className = `notification ${type}`;
     notification.innerHTML = `
       <div class="notification-content">
-        <span class="notification-icon">${type === 'warning' ? '⚠️' : type === 'success' ? '✅' : 'ℹ️'}</span>
+        <span class="notification-icon">${type === 'warning' ? 'Warning' : type === 'success' ? 'Success' : 'Info'}</span>
         <span class="notification-message">${message}</span>
       </div>
     `;
@@ -777,16 +776,49 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 5000);
   }
 
-  // Modal management functions
+   // Modal management functions
   function openModal(modal) {
-    modal.style.display = 'block';
+    // Force modal to be positioned at top of viewport
+    modal.style.display = 'flex';
+    modal.style.alignItems = 'flex-start';
+    modal.style.justifyContent = 'center';
+    modal.style.paddingTop = '2vh';
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    
+    // Scroll everything to top immediately - multiple approaches for reliability
+    setTimeout(() => {
+      modal.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      window.scrollTo(0, 0);
+      
+      // Also scroll the modal content itself to top
+      const modalContent = modal.querySelector('.modal-content');
+      if (modalContent) {
+        modalContent.scrollTop = 0;
+      }
+      
+      // Force any scrollable containers within the modal to top
+      const scrollableElements = modal.querySelectorAll('[style*="overflow"], .comprehensive-tenant-report');
+      scrollableElements.forEach(el => {
+        el.scrollTop = 0;
+      });
+    }, 50);
+    
+    // Additional scroll reset after animation
+    setTimeout(() => {
+      modal.scrollTop = 0;
+      const modalContent = modal.querySelector('.modal-content');
+      if (modalContent) {
+        modalContent.scrollTop = 0;
+      }
+    }, 350);
     
     // Focus management for accessibility
     const firstFocusable = modal.querySelector('button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
     if (firstFocusable) {
-      firstFocusable.focus();
+      setTimeout(() => firstFocusable.focus(), 100);
     }
   }
 
@@ -808,7 +840,7 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   window.exportReport = function(tenantName) {
-    showNotification(`📧 Report for ${tenantName} would be emailed to your registered address.`, 'info');
+    showNotification(`Report for ${tenantName} would be emailed to your registered address.`, 'info');
   };
 
   window.closeModal = closeModal;
@@ -904,6 +936,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Event listeners setup
   function setupEventListeners() {
+    // Logo click functionality - scroll to top
+    const logoContainer = document.getElementById('logoContainer');
+    if (logoContainer) {
+      logoContainer.addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+
     // Search functionality
     const searchBtn = document.getElementById('searchBtn');
     const searchInput = document.getElementById('tenantSearch');
