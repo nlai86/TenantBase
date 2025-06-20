@@ -555,7 +555,7 @@ td:first-child {
 footer {
   background: linear-gradient(135deg, var(--text-primary) 0%, #1a202c 100%);
   color: white;
-  padding: 3rem clamp(1rem, 4vw, 2rem) 2rem;
+  padding: 2rem clamp(1rem, 4vw, 2rem) 2rem;
   text-align: center;
 }
 
@@ -574,7 +574,7 @@ footer a:hover {
   color: var(--primary-light);
 }
 
-/* Modal Styles */
+/* Modal Styles - Alternative approach using flexbox */
 .modal {
   display: none;
   position: fixed;
@@ -585,15 +585,20 @@ footer a:hover {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
+  /* Use flexbox to control positioning */
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
   overflow-y: auto;
   overflow-x: hidden;
-  align-items: flex-start !important;
-  justify-content: center;
-  padding-top: 1vh; /* Reduced from 2vh for closer to top */
   /* Hide scrollbar while keeping functionality */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer and Edge */
 }
+
+/* Remove the scroll container approach - use flexbox instead */
 
 /* Hide scrollbar for Webkit browsers */
 .modal::-webkit-scrollbar {
@@ -1413,4 +1418,41 @@ footer a:hover {
   .modal {
     padding-top: 0.5vh; /* Even closer to top on mobile */
   }
+}
+/* Modal Styles *//* Notification Styles */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  max-width: 300px;
+  z-index: 999; /* Reduced from 1001 to stay below modal close buttons */
+  transform: translateX(110%);
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: white;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.notification.show {
+  transform: translateX(0);
+}
+
+.notification.success {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.notification.warning {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.notification.error {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.notification.info {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
 }
