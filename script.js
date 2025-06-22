@@ -616,7 +616,7 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
     `;
 
-    // Create and show report modal
+    // Create and show report modal with improved scroll control
     let reportModal = document.getElementById('reportModal');
     if (!reportModal) {
       reportModal = document.createElement('div');
@@ -627,6 +627,12 @@ document.addEventListener('DOMContentLoaded', function () {
       document.body.appendChild(reportModal);
     }
 
+    // Clear any existing content and reset styles
+    reportModal.innerHTML = '';
+    reportModal.style.display = 'none';
+    reportModal.scrollTop = 0;
+
+    // Insert content
     reportModal.innerHTML = `
       <div class="modal-content comprehensive-report-modal">
         <span class="close" onclick="closeModal(document.getElementById('reportModal'))">&times;</span>
@@ -634,6 +640,7 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
     `;
 
+    // Open the modal with improved scroll control
     openModal(reportModal);
   }
 
@@ -778,53 +785,34 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 4000);
   }
 
-   // Modal management functions
+  // Modal management functions
   function openModal(modal) {
-    // Prevent page scrolling first
+    // Prevent background scrolling
     document.body.style.overflow = 'hidden';
-    document.documentElement.style.overflow = 'hidden';
     
-    // Reset any existing transforms or positions
-    modal.style.transform = '';
-    modal.style.top = '0';
-    modal.style.left = '0';
-    
-    // Set modal to block display but keep it invisible
-    modal.style.display = 'block';
-    modal.style.opacity = '0';
-    modal.style.visibility = 'hidden';
-    
-    // Force the modal and page to scroll to top immediately
+    // Force page to top
     window.scrollTo(0, 0);
-    modal.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
     
+    // Show modal immediately at top
+    modal.style.display = 'block';
+    modal.scrollTop = 0;
+    
+    // Reset modal content scroll
     const modalContent = modal.querySelector('.modal-content');
     if (modalContent) {
       modalContent.scrollTop = 0;
     }
     
-    // Force a layout recalculation
-    modal.offsetHeight;
-    
-    // Now make it visible
-    modal.style.visibility = 'visible';
+    // Set accessibility
     modal.setAttribute('aria-hidden', 'false');
     
-    // Smooth fade in
-    requestAnimationFrame(() => {
-      modal.style.transition = 'opacity 0.2s ease';
-      modal.style.opacity = '1';
-    });
-    
-    // Focus management
+    // Focus first element
     setTimeout(() => {
       const firstFocusable = modal.querySelector('button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
       if (firstFocusable) {
-        firstFocusable.focus();
+        firstFocusable.focus({ preventScroll: true });
       }
-    }, 250);
+    }, 100);
   }
 
   function closeModal(modal) {
@@ -1114,45 +1102,3 @@ document.addEventListener('DOMContentLoaded', function () {
   console.log('TenantBase initialized successfully!');
   console.log('Try searching for: john smith, mike wilson, sarah johnson, or any other name');
 });
-
-// Modal management functions
-  function openModal(modal) {
-    // Immediately prevent page scrolling and reset scroll
-    document.body.style.overflow = 'hidden';
-    document.documentElement.style.overflow = 'hidden';
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-    
-    // Set modal to block display (no flexbox)
-    modal.style.display = 'block';
-    modal.style.opacity = '0';
-    modal.setAttribute('aria-hidden', 'false');
-    
-    // Force modal scroll to top
-    modal.scrollTop = 0;
-    
-    // Reset content scroll if it exists
-    const modalContent = modal.querySelector('.modal-content');
-    if (modalContent) {
-      modalContent.scrollTop = 0;
-    }
-    
-    // Force layout calculation and ensure we're at top
-    modal.offsetHeight;
-    modal.scrollTop = 0;
-    
-    // Fade in
-    setTimeout(() => {
-      modal.style.transition = 'opacity 0.3s ease';
-      modal.style.opacity = '1';
-    }, 10);
-    
-    // Focus management
-    setTimeout(() => {
-      const firstFocusable = modal.querySelector('button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
-      if (firstFocusable) {
-        firstFocusable.focus();
-      }
-    }, 100);
-  }

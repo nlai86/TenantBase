@@ -596,6 +596,9 @@ footer a:hover {
   /* Hide scrollbar while keeping functionality */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer and Edge */
+  scroll-behavior: auto !important;
+  /* Ensure content always starts at top */
+  align-content: flex-start;
 }
 
 /* Remove the scroll container approach - use flexbox instead */
@@ -607,7 +610,7 @@ footer a:hover {
 
 .modal-content {
   background: white;
-  margin: 1% auto 2%; /* Reduced top margin, added bottom margin for scrolling */
+  margin: 20px auto 20px; /* Consistent margins */
   padding: 2rem;
   border-radius: var(--card-radius);
   width: 90%;
@@ -615,13 +618,15 @@ footer a:hover {
   position: relative;
   box-shadow: var(--shadow-xl);
   animation: modalSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  max-height: 95vh;
+  max-height: 90vh;
   overflow-y: auto;
   overflow-x: hidden;
-  scroll-behavior: auto;
+  scroll-behavior: auto !important;
   /* Hide scrollbar while keeping functionality */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer and Edge */
+  /* Ensure content starts at top */
+  align-self: flex-start;
 }
 
 /* Hide scrollbar for Webkit browsers */
@@ -633,14 +638,17 @@ footer a:hover {
 .comprehensive-report-modal {
   max-width: 1200px;
   width: 95%;
-  margin: 1% auto 2%; /* Consistent with regular modal */
+  margin: 20px auto 20px; /* Consistent with regular modal */
   padding: 0;
-  max-height: 95vh;
+  max-height: 90vh;
   overflow-y: auto;
   overflow-x: hidden;
   /* Hide scrollbar while keeping functionality */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer and Edge */
+  scroll-behavior: auto !important;
+  /* Ensure content starts at top */
+  align-self: flex-start;
 }
 
 /* Hide scrollbar for Webkit browsers */
@@ -787,18 +795,19 @@ footer a:hover {
 /* Notification Styles */
 .notification {
   position: fixed;
-  top: 10px;
-  right: 10px;
-  background: white;
-  border-radius: 8px; /* Smaller radius */
-  box-shadow: var(--shadow-xl);
-  border-left: 3px solid var(--primary); /* Thinner border */
-  padding: 0.5rem 0.75rem; /* Much smaller padding */
-  max-width: 240px; /* Much smaller width */
-  z-index: 1001;
-  transform: translateX(100%);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  font-size: 0.8rem; /* Smaller text */
+  top: 20px;
+  right: 20px;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  max-width: 300px;
+  z-index: 999; /* Reduced from 1001 to stay below modal close buttons */
+  transform: translateX(110%);
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: white;
+  font-weight: 500;
+  line-height: 1.4;
 }
 
 .notification.show {
@@ -806,32 +815,19 @@ footer a:hover {
 }
 
 .notification.success {
-  border-left-color: #10b981;
+  background: linear-gradient(135deg, #10b981, #059669);
 }
 
 .notification.warning {
-  border-left-color: #f59e0b;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
 }
 
 .notification.error {
-  border-left-color: #ef4444;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
 }
 
-.notification-content {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem; /* Smaller gap */
-}
-
-.notification-icon {
-  font-size: 0.875rem; /* Much smaller icon */
-  flex-shrink: 0;
-}
-
-.notification-message {
-  font-weight: 500;
-  color: var(--text-primary);
-  line-height: 1.3;
+.notification.info {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
 }
 
 /* Comprehensive Tenant Report Styles */
@@ -1399,12 +1395,12 @@ footer a:hover {
   
   .comprehensive-report-modal {
     width: 98%;
-    margin: 0.5% auto 2%; /* Even closer to top on mobile */
+    margin: 10px auto 20px; /* Consistent margins on mobile */
   }
   
   .modal-content {
     width: 95%;
-    margin: 2% auto 4%; /* Adjust for mobile */
+    margin: 10px auto 20px; /* Consistent margins on mobile */
   }
   
   .close {
@@ -1414,45 +1410,4 @@ footer a:hover {
     width: 28px;
     height: 28px;
   }
-  
-  .modal {
-    padding-top: 0.5vh; /* Even closer to top on mobile */
-  }
-}
-/* Modal Styles *//* Notification Styles */
-.notification {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  border-radius: 8px;
-  padding: 1rem 1.5rem;
-  max-width: 300px;
-  z-index: 999; /* Reduced from 1001 to stay below modal close buttons */
-  transform: translateX(110%);
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  color: white;
-  font-weight: 500;
-  line-height: 1.4;
-}
-
-.notification.show {
-  transform: translateX(0);
-}
-
-.notification.success {
-  background: linear-gradient(135deg, #10b981, #059669);
-}
-
-.notification.warning {
-  background: linear-gradient(135deg, #f59e0b, #d97706);
-}
-
-.notification.error {
-  background: linear-gradient(135deg, #ef4444, #dc2626);
-}
-
-.notification.info {
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
 }
