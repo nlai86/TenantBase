@@ -787,8 +787,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Modal management functions
   function openModal(modal) {
-    // Prevent background scrolling
+    // Prevent background scrolling and set matching background
     document.body.style.overflow = 'hidden';
+    document.body.style.backgroundColor = '#1a1a1a';
+    document.documentElement.style.backgroundColor = '#1a1a1a';
     
     // Force page to top
     window.scrollTo(0, 0);
@@ -819,6 +821,8 @@ document.addEventListener('DOMContentLoaded', function () {
     modal.style.display = 'none';
     modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    document.body.style.backgroundColor = '';
+    document.documentElement.style.backgroundColor = '';
     document.documentElement.style.overflow = '';
   }
 

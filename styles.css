@@ -23,6 +23,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -574,34 +578,35 @@ footer a:hover {
   color: var(--primary-light);
 }
 
-/* Modal Styles - Alternative approach using flexbox */
+/* Modal Styles - Direct solid background approach */
 .modal {
   display: none;
   position: fixed;
   z-index: 1000;
   left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
-  /* Use flexbox to control positioning */
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 20px;
-  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  background: #1a1a1a; /* Solid background instead of rgba */
   overflow-y: auto;
   overflow-x: hidden;
   /* Hide scrollbar while keeping functionality */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer and Edge */
   scroll-behavior: auto !important;
-  /* Ensure content always starts at top */
-  align-content: flex-start;
 }
 
-/* Remove the scroll container approach - use flexbox instead */
+/* Additional safety background */
+.modal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200vh; /* Make it much taller than viewport */
+  background: #1a1a1a; /* Same solid background */
+  z-index: -1;
+}
 
 /* Hide scrollbar for Webkit browsers */
 .modal::-webkit-scrollbar {
@@ -610,45 +615,44 @@ footer a:hover {
 
 .modal-content {
   background: white;
-  margin: 20px auto 20px; /* Consistent margins */
+  margin: 20px auto;
   padding: 2rem;
   border-radius: var(--card-radius);
-  width: 90%;
-  max-width: 400px;
+  width: calc(100% - 40px);
+  max-width: 380px;
   position: relative;
   box-shadow: var(--shadow-xl);
   animation: modalSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  max-height: 90vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  scroll-behavior: auto !important;
+  z-index: 1;
+  /* Remove height constraints that might cause issues */
+  min-height: auto;
   /* Hide scrollbar while keeping functionality */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer and Edge */
-  /* Ensure content starts at top */
-  align-self: flex-start;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /* Hide scrollbar for Webkit browsers */
-.modal-content::-webkit-scrollbar {
+.modal-content::-webkit-scrollbar,
+.comprehensive-report-modal::-webkit-scrollbar {
   display: none;
 }
 
 /* Comprehensive report modal needs to be much larger */
 .comprehensive-report-modal {
-  max-width: 1200px;
-  width: 95%;
-  margin: 20px auto 20px; /* Consistent with regular modal */
+  max-width: 1160px;
+  width: calc(100% - 40px);
+  margin: 20px auto;
   padding: 0;
-  max-height: 90vh;
-  overflow-y: auto;
-  overflow-x: hidden;
+  z-index: 1;
+  /* Remove height constraints that might cause issues */
+  min-height: auto;
   /* Hide scrollbar while keeping functionality */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer and Edge */
-  scroll-behavior: auto !important;
-  /* Ensure content starts at top */
-  align-self: flex-start;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /* Hide scrollbar for Webkit browsers */
@@ -1394,13 +1398,15 @@ footer a:hover {
   }
   
   .comprehensive-report-modal {
-    width: 98%;
-    margin: 10px auto 20px; /* Consistent margins on mobile */
+    width: calc(100% - 20px);
+    max-width: none;
+    margin: 10px auto;
   }
   
   .modal-content {
-    width: 95%;
-    margin: 10px auto 20px; /* Consistent margins on mobile */
+    width: calc(100% - 20px);
+    max-width: none;
+    margin: 10px auto;
   }
   
   .close {
