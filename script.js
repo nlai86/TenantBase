@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const tenantDatabase = {
     'john smith': {
       name: 'John Smith',
-      creditScore: 780,
+      creditScore: 785,
       ltbCases: 0,
       evictionHistory: 'None',
       evictionDetails: [],
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     'sarah johnson': {
       name: 'Sarah Johnson',
-      creditScore: 720,
+      creditScore: 675,
       ltbCases: 1,
       evictionHistory: '1 case settled out of court (2023)',
       evictionDetails: [],
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     'mike wilson': {
       name: 'Mike Wilson',
-      creditScore: 520,
+      creditScore: 540,
       ltbCases: 3,
       evictionHistory: '2 evictions, 1 pending case',
       evictionDetails: [
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     'test user': {
       name: 'Test User',
-      creditScore: 850,
+      creditScore: 825,
       ltbCases: 0,
       evictionHistory: 'None',
       evictionDetails: [],
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Your requested tenant profiles
     'nicholas lai': {
       name: 'Nicholas Lai',
-      creditScore: 800,
+      creditScore: 765,
       ltbCases: 0,
       evictionHistory: 'None',
       evictionDetails: [],
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     'tula nikitopoulos': {
       name: 'Tula Nikitopoulos',
-      creditScore: 843,
+      creditScore: 810,
       ltbCases: 0,
       evictionHistory: 'None',
       evictionDetails: [],
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     'angelika korzeniewski': {
       name: 'Angelika Korzeniewski',
-      creditScore: 861,
+      creditScore: 845,
       ltbCases: 0,
       evictionHistory: 'None',
       evictionDetails: [],
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     'michael saltzman': {
       name: 'Michael Saltzman',
-      creditScore: 615,
+      creditScore: 635,
       ltbCases: 2,
       evictionHistory: '1 eviction for lease violations (2023)',
       evictionDetails: [
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     'yusuf al-shibiby': {
       name: 'Yusuf Al-Shibiby',
-      creditScore: 480,
+      creditScore: 465,
       ltbCases: 5,
       evictionHistory: '3 evictions across different properties',
       evictionDetails: [
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     'dan tzotzis': {
       name: 'Dan Tzotzis',
-      creditScore: 710,
+      creditScore: 735,
       ltbCases: 1,
       evictionHistory: 'None - 1 dispute resolved amicably',
       evictionDetails: [],
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Additional Low Risk Tenants
     'emma thompson': {
       name: 'Emma Thompson',
-      creditScore: 780,
+      creditScore: 795,
       ltbCases: 0,
       evictionHistory: 'None',
       evictionDetails: [],
@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     'david chen': {
       name: 'David Chen',
-      creditScore: 745,
+      creditScore: 720,
       ltbCases: 0,
       evictionHistory: 'None',
       evictionDetails: [],
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Medium Risk Tenants
     'alex rodriguez': {
       name: 'Alex Rodriguez',
-      creditScore: 630,
+      creditScore: 620,
       ltbCases: 1,
       evictionHistory: 'None - case was for noise complaints, resolved',
       evictionDetails: [],
@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // High Risk Tenants with detailed eviction histories
     'jason miller': {
       name: 'Jason Miller',
-      creditScore: 520,
+      creditScore: 505,
       ltbCases: 4,
       evictionHistory: '1 eviction for non-payment (2023)',
       evictionDetails: [
@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     'maria santos': {
       name: 'Maria Santos',
-      creditScore: 485,
+      creditScore: 445,
       ltbCases: 6,
       evictionHistory: '3 evictions across different properties',
       evictionDetails: [
