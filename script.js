@@ -111,8 +111,8 @@ document.addEventListener('DOMContentLoaded', function () {
       riskLevel: 'Medium',
       lastUpdated: '2025-01-14'
     },
-    'yusuf al-shibiby': {
-      name: 'Yusuf Al-Shibiby',
+    'gurleen datla': {
+      name: 'Gurleen Datla',
       creditScore: 465,
       ltbCases: 5,
       evictionHistory: '3 evictions across different properties',
@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const searchSuggestions = [
     'john smith', 'sarah johnson', 'mike wilson', 'emma thompson', 'david chen',
     'alex rodriguez', 'jason miller', 'maria santos', 'nicholas lai', 'tula nikitopoulos',
-    'angelika korzeniewski', 'michael saltzman', 'yusuf al-shibiby', 'dan tzotzis'
+    'angelika korzeniewski', 'michael saltzman', 'gurleen datla', 'dan tzotzis'
   ];
 
   // Enhanced search with suggestions
