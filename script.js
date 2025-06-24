@@ -334,7 +334,7 @@ document.addEventListener('DOMContentLoaded', function () {
       
       if (searchResult.type === 'exact') {
         // Found exact match - show full report
-        showNotification(`Records found for ${searchResult.data.name}!\n\nGenerating comprehensive report...`, 'success');
+        showNotification(`Records found for ${searchResult.data.name}!\n\nGenerating comprehensive report`, 'success');
         setTimeout(() => {
           showTenantReport(searchResult.data);
         }, 800);
@@ -965,6 +965,19 @@ document.addEventListener('DOMContentLoaded', function () {
     if (sampleReportBtn) {
       sampleReportBtn.addEventListener('click', showSampleReport);
     }
+
+    // Pricing button functionality
+    document.querySelectorAll('.plan-button').forEach(button => {
+      button.addEventListener('click', function() {
+        const planName = this.textContent.replace('Choose ', '');
+        showNotification(`Thank you for your interest in the ${planName} plan! Redirecting to signup...`, 'info');
+        
+        // Simulate redirect to signup with plan selection
+        setTimeout(() => {
+          openModal(document.getElementById('signupModal'));
+        }, 1500);
+      });
+    });
 
     // Navigation links
     document.querySelectorAll('nav a').forEach(link => {
