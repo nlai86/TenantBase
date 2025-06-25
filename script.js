@@ -546,7 +546,7 @@ document.addEventListener('DOMContentLoaded', function () {
                       <li>Minor issues resolved through landlord intervention</li>
                       <li>Shows improvement over time</li>
                     ` : `
-                      <li>Multiple negative reports from previous landlords</li>
+                      <li>Bad player; doesn't show up in big games</li>
                       <li>Poor communication and unresponsive behavior</li>
                       <li>Property damage and maintenance neglect reported</li>
                       <li>Neighbor complaints and disturbances documented</li>
