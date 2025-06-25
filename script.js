@@ -111,8 +111,8 @@ document.addEventListener('DOMContentLoaded', function () {
       riskLevel: 'Medium',
       lastUpdated: '2025-01-14'
     },
-    'elon musk': {
-      name: 'Elon Musk',
+    'mitchell marner': {
+      name: 'Mitchell Marner',
       creditScore: 465,
       ltbCases: 5,
       evictionHistory: '3 evictions across different properties',
@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const searchSuggestions = [
     'john smith', 'sarah johnson', 'mike wilson', 'emma thompson', 'david chen',
     'alex rodriguez', 'jason miller', 'maria santos', 'nicholas lai', 'tula nikitopoulos',
-    'angelika korzeniewski', 'michael saltzman', 'elon musk', 'dan tzotzis'
+    'angelika korzeniewski', 'michael saltzman', 'mitchell marner', 'dan tzotzis'
   ];
 
   // Enhanced search with suggestions
