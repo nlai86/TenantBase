@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', function () {
       riskLevel: 'Medium',
       lastUpdated: '2025-01-10'
     },
-    'mike wilson': {
-      name: 'Mike Wilson',
+    'michelle sugarwoman': {
+      name: 'Michelle Sugarwoman',
       creditScore: 540,
       ltbCases: 3,
       evictionHistory: '2 evictions, 1 pending case',
@@ -243,7 +243,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Database search suggestions for partial matches
   const searchSuggestions = [
-    'john smith', 'sarah johnson', 'mike wilson', 'emma thompson', 'david chen',
+    'john smith', 'sarah johnson', 'michelle sugarwoman', 'emma thompson', 'david chen',
     'alex rodriguez', 'jason miller', 'maria santos', 'nicholas lai', 'tula nikitopoulos',
     'angelika korzeniewski', 'michael saltzman', 'mitchell marner', 'dan tzotzis'
   ];
@@ -543,7 +543,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     ` : tenantData.riskLevel === 'Medium' ? `
                       <li>Mixed feedback with some concerns addressed</li>
                       <li>Generally responsive but occasional communication delays</li>
-                      <li>Minor issues resolved through landlord intervention</li>
+                      <li>Minor issues resolved through landlord in tervention</li>
                       <li>Shows improvement over time</li>
                     ` : `
                       <li>Bad player; doesn't show up in big games</li>
